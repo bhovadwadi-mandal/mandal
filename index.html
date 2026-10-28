@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>भोवडवाडी उत्कर्ष मंडळ</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#3b1a0c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="उत्कर्ष मंडळ">
+<style>
+:root{--bg:#120d0a;--hd:#3b1a0c;--card:#221a16;--tx:#f3e6da;--mut:#a8927f;--ac:#f0a53a;--or:#c8460f;--bd:#3a2a20;--ok:#4ade80;--bad:#f87171;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Noto Sans Devanagari","Mukta",system-ui,sans-serif;line-height:1.45;padding-bottom:130px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:10}
+.w{max-width:560px;margin:0 auto}
+.top{background:var(--hd);padding:14px 16px 0;display:flex;align-items:center;gap:12px}
+.top.r{border-radius:0 0 22px 22px;padding-bottom:14px;margin-bottom:6px}
+.lg{width:52px;height:52px;border-radius:50%;border:2px solid #a8691f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px;color:var(--ac);flex:none}
+.top h1{font-size:18px;margin:0;line-height:1.25}
+.top small{color:var(--mut)}
+.mn{margin-left:auto;background:none;border:0;color:var(--tx);font-size:28px}
+.hero{background:var(--hd);padding:12px 16px 22px;border-radius:0 0 28px 28px}
+.big{font-size:40px;font-weight:800;color:var(--ac);line-height:1.15}
+.pill{background:#5a3519;color:var(--tx);border:0;border-radius:20px;padding:8px 12px;font:inherit;font-size:14px}
+.bar{height:8px;background:#5a4638;border-radius:4px;margin:14px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ac)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.two small{color:var(--mut);display:block}
+.two b{font-size:22px}
+.chips{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chip{background:#4a2a15;border-radius:18px;padding:7px 14px;font-size:14px}
+.sec{padding:12px 16px 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;background:#4a2a15;color:var(--ac);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.g{flex:1;min-width:0}.n{font-weight:600}.s{color:var(--mut);font-size:13px}
+.a{font-weight:800;color:var(--ac);white-space:nowrap}.ok{color:var(--ok)}.bd{color:var(--bad)}
+h3{margin:14px 0 8px;color:#fb923c;font-size:17px;display:flex;justify-content:space-between}
+label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+input,select.f{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+.btn{width:100%;margin-top:14px;padding:13px;border:0;border-radius:12px;background:var(--or);color:#fff;font:inherit;font-weight:700;text-align:center;display:block;text-decoration:none}
+.sm{width:auto;margin:6px 0 0;padding:5px 10px;font-size:12px;background:none;border:1px solid var(--ac);color:var(--ac);display:inline-block}
+.fab{position:fixed;right:16px;bottom:calc(86px + env(safe-area-inset-bottom,0px));background:var(--or);color:#fff;border:0;border-radius:30px;padding:16px 22px;font:inherit;font-weight:700;font-size:16px;box-shadow:0 4px 14px #0008;z-index:5}
+nav{position:fixed;left:0;right:0;bottom:0;background:#1c1512;display:flex;padding:8px 4px calc(8px + env(safe-area-inset-bottom,0px));z-index:6;border-top:1px solid var(--bd)}
+nav button{flex:1;background:none;border:0;color:var(--mut);font:inherit;font-size:12px;padding:6px 0;border-radius:20px}
+nav button span{display:block;font-size:22px}
+nav button.on{color:#fb923c;background:#3b1f10}
+.rc{border:2px dashed var(--ac);border-radius:14px;padding:16px;background:var(--card)}
+.rc table{width:100%;border-collapse:collapse;font-size:14px}
+.rc td{padding:6px 0;border-bottom:1px solid var(--bd)}
+.rc td:first-child{color:var(--mut);width:36%}
+.note{font-size:12px;color:var(--mut);text-align:center;margin:14px 16px}
+</style>
+</head>
+<body>
+<div id="ld" class="note" style="margin-top:40vh">लोड होत आहे…</div>
+<div id="login" style="display:none;max-width:560px;margin:0 auto;padding:40px 20px"><div style="text-align:center"><img class="lg" src="icon-192.png" alt="" style="display:block;margin:0 auto 12px;width:84px;height:84px;object-fit:cover"><h1 style="font-size:22px;margin:0">भोवडवाडी उत्कर्ष मंडळ</h1><div class="s">फुपेरे (रजि.) · स्थापना 1980</div></div><div class="card" style="margin-top:28px"><label>तुमचे नाव</label><input id="ln" placeholder="उदा. मनोज भोवड"><label>मोबाईल नं</label><input id="lp" type="tel" inputmode="numeric" placeholder="10 अंकी नंबर"><button class="btn" onclick="login()">लॉगिन</button><div class="s" style="margin-top:10px">नाव मंडळाच्या यादीत असणे आवश्यक आहे; मोबाईल नं कोणताही चालेल.</div></div><div class="card"><div class="s">समिती कोडने प्रवेश (पहिल्यांदा / यादी रिकामी असल्यास):</div><input id="lpin" type="password" placeholder="समिती कोड"><button class="btn sm" onclick="loginCode()">कोडने प्रवेश</button></div></div>
+<div id="app">
+<div class="w">
+<div class="top"><img class="lg" src="icon-192.png" alt="" style="object-fit:cover"><div><h1>भोवडवाडी उत्कर्ष मंडळ</h1><small>फुपेरे (रजि.) · स्थापना 1980</small></div><button class="mn" onclick="show('pf')">☰</button></div>
+<div id="ib" class="card" style="display:none;margin:10px 16px 0"></div>
+<div id="main"></div>
+<p class="note">सर्व नोंदी सर्व सभासदांना लगेच दिसतात.</p>
+</div>
+<button class="fab" id="fab" onclick="openF('वर्गणी')">＋ नवीन जमा</button>
+<nav>
+<button onclick="show('home')"><span>🏠</span>होम</button>
+<button onclick="show('mem')"><span>👥</span>सभासद</button>
+<button onclick="openF('वर्गणी')"><span>➕</span>जमा</button>
+<button onclick="show('rec')"><span>🧾</span>पावती</button>
+<button onclick="show('wk')"><span>🤝</span>कार्यकर्ते</button>
+</nav>
+<div id="dq" style="display:none;position:fixed;inset:0;background:#000b;z-index:30;align-items:flex-end"></div>
+</div>
+<script>
+var K="mandal_v2",V="home",FT="वर्गणी",rcId=0,admin=false,R={};
+var td0=new Date().toISOString().slice(0,10);
+var D={ev:[],cur:null,M:[],E:[],W:[],P:{}},S=null,booted=false,booting=false,first={};
+try{admin=localStorage.getItem("mandal_cm")==="1";var s0=localStorage.getItem(K+"s");if(s0)S=JSON.parse(s0)}catch(e){}
+function sv(){}
+function $(i){return document.getElementById(i)}
+function inr(n){return "₹"+Number(n).toLocaleString("en-IN")}
+function fdt(s){var p=s.split("-");return p[2]+"/"+p[1]+"/"+p[0]}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function toast(m){var d=document.createElement("div");d.textContent=m;d.style.cssText="position:fixed;left:12px;right:12px;bottom:calc(90px + env(safe-area-inset-bottom,0px));background:#b91c1c;color:#fff;padding:12px;border-radius:10px;text-align:center;z-index:40";document.body.appendChild(d);setTimeout(function(){d.remove()},2500)}
+function ce(){return D.E.filter(function(e){return e.ev===D.cur})}
+function paid(id){return ce().reduce(function(s,e){return s+(e.t==="वर्गणी"&&e.m===id?e.a:0)},0)}
+function evn(){var e=D.ev.filter(function(e){return e.id===D.cur})[0];return e?e.n:"—"}
+function st(){var o={inc:0,out:0,vg:0,dn:0,ot:0,rk:0,up:0,tt:0,tc:0};
+ce().forEach(function(e){if(e.t==="खर्च")o.out+=e.a;else{o.inc+=e.a;if(e.t==="वर्गणी")o.vg+=e.a;else if(e.t==="देणगी")o.dn+=e.a;else o.ot+=e.a;if(e.mode==="रोख")o.rk+=e.a;else o.up+=e.a;if(e.d===td0){o.tt+=e.a;o.tc++}}});
+o.bk=D.M.map(function(m){return {m:m,b:m.due-paid(m.id)}}).filter(function(x){return x.b>0});
+o.tb=o.bk.reduce(function(s,x){return s+x.b},0);return o}
+function pinCard(){return '<div class="card"><b>समिती कोड</b><div class="s">नोंद आणि बदल फक्त समिती कोड असलेले करू शकतात.</div><input id="pin" type="password" placeholder="समिती कोड टाका"><button class="btn" onclick="unlock()">उघडा</button></div>'}
+function codeCheck(c){var u=FB.auth&&FB.auth.currentUser;if(!u)return Promise.reject({code:"no-auth"});return FB.setDoc(FB.doc(FB.db,"committee",u.uid),{k:c})}
+function setCode(){admin=true;try{localStorage.setItem("mandal_cm","1")}catch(e){}
+if(!D.ev.length)W(function(){return FB.addDoc(FB.collection(FB.db,"events"),{n:"उत्सव 2026",ts:FB.serverTimestamp()})})}
+function unlock(){var c=$("pin").value.trim();if(!c){toast("कोड टाका");return}
+codeCheck(c).then(function(){setCode();show(V)}).catch(function(){toast("समिती कोड चुकीचा आहे")})}
+function dg(x){return String(x||"").replace(/\D/g,"").slice(-10)}
+function norm(x){return String(x||"").replace(/\s+/g," ").trim().toLowerCase()}
+function find(n){var k=norm(n);
+var w=D.W.filter(function(x){return norm(x.n)===k})[0];if(w)return {o:w,w:true};
+var m=D.M.filter(function(x){return norm(x.n)===k})[0];return m?{o:m,w:false}:null}
+function nums(o){return [o.p].concat(o.x||[]).filter(Boolean)}
+function nl(o){var a=nums(o);return a.length?a.map(function(t){return '<a href="tel:'+esc(t)+'" style="color:var(--mut)">📞 '+esc(t)+'</a>'}).join(' '):'मोबाईल नाही'}
+function can(){return admin}
+function ss(){try{localStorage.setItem(K+"s",JSON.stringify(S))}catch(e){}}
+function login(){var n=$("ln").value.trim(),p=$("lp").value.trim();
+if(!n||dg(p).length<10){toast("नाव आणि 10 अंकी मोबाईल नं टाका");return}
+var f=find(n);if(!f){toast("हे नाव यादीत नाही. समितीला नाव जोडायला सांगा");return}
+var o=f.o;
+if(!nums(o).some(function(x){return dg(x)===dg(p)}))FB.updateDoc(FB.doc(FB.db,f.w?"workers":"members",o.id),{x:FB.arrayUnion(p)}).catch(function(){});
+S={n:o.n,p:p,role:f.w?o.r:"सभासद"};ss();start()}
+function loginCode(){var c=$("lpin").value.trim();if(!c){toast("कोड टाका");return}
+codeCheck(c).then(function(){setCode();S={n:$("ln").value.trim()||"समिती",p:$("lp").value.trim(),role:"समिती",pin:true};ss();start()}).catch(function(){toast("समिती कोड चुकीचा आहे")})}
+function logout(){S=null;admin=false;try{localStorage.removeItem(K+"s");localStorage.removeItem("mandal_cm")}catch(e){}start()}
+function start(){$("ld").style.display="none";
+if(S&&!S.pin){var f=find(S.n);S=f?{n:f.o.n,p:S.p,role:f.w?f.o.r:"सभासद"}:null}
+var L=!S;$("login").style.display=L?"block":"none";$("app").style.display=L?"none":"block";
+if(!L){show("home");ib()}}
+var DIP=null;
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();DIP=e;if(S)ib()});
+function ib(){var el=$("ib"),sa=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone,ios=/iphone|ipad|ipod/i.test(navigator.userAgent),dn="";
+try{dn=localStorage.getItem("mandal_ib")}catch(e){}
+if(sa||dn||(!DIP&&!ios)){el.style.display="none";return}
+el.style.display="block";
+el.innerHTML='<div class="row"><div style="font-size:26px">📲</div><div class="g"><div class="n">अँप मोबाईलवर जोडा</div><div class="s">'+(DIP?'एका बटणाने होम स्क्रीनवर आयकॉन जोडा':'Safari मध्ये Share ⬆ दाबा आणि "Add to Home Screen" निवडा')+'</div></div></div>'+(DIP?'<button class="btn" style="margin-top:10px" onclick="inst()">जोडा</button>':'')+'<button class="btn sm" style="margin-top:8px" onclick="ibx()">नंतर</button>'}
+function inst(){if(DIP){DIP.prompt();DIP=null;ibx()}}
+function ibx(){try{localStorage.setItem("mandal_ib","1")}catch(e){}$("ib").style.display="none"}
+
+function W(f){return f().catch(function(e){
+if(String(e.code).indexOf("permission")>=0){admin=false;try{localStorage.removeItem("mandal_cm")}catch(x){}toast("समिती कोड आवश्यक आहे");show(V)}
+else toast("सेव्ह झाले नाही: "+(e.code||e.message))})}
+function err(e){var l=$("ld");l.style.display="block";l.textContent="डेटा मिळाला नाही: "+(e.code||e.message)+" — Firebase नियम (rules) तपासा."}
+function ms(o){return o.ts&&o.ts.toMillis?o.ts.toMillis():Date.now()}
+function refresh(){var a=document.activeElement;if(a&&/INPUT|SELECT/.test(a.tagName)&&V!=="home")return;
+if(S&&["home","rec","mem","wk","ex","rp","rcv"].indexOf(V)>=0)show(V)}
+function got(k){first[k]=1;if(!booted){if(Object.keys(first).length>=5){booted=true;start()}}else refresh()}
+function sub(c,key){FB.onSnapshot(FB.collection(FB.db,c),function(sn){
+var l=sn.docs.map(function(d){var o=d.data({serverTimestamps:"estimate"});o.id=d.id;return o})
+if(key==="E")D.X=l.filter(function(o){return o.del});
+l=l.filter(function(o){return !o.del});
+l.sort(function(a,b){return ms(a)-ms(b)});D[key]=l;
+if(key==="ev"){var c0="";try{c0=localStorage.getItem("mandal_cur")||""}catch(e){}
+D.cur=l.some(function(e){return e.id===c0})?c0:(l.length?l[l.length-1].id:null)}
+got(c)},err)}
+function boot(){if(booting)return;booting=true;
+if(FB.bad){$("ld").textContent="Firebase config भरलेला नाही. index.html मध्ये firebaseConfig भरा.";return}
+sub("entries","E");sub("members","M");sub("workers","W");sub("events","ev");
+FB.onSnapshot(FB.doc(FB.db,"profile","main"),function(d){D.P=d.exists()?d.data():{};got("profile")},err)}
+
+R.home=function(){var o=st(),pc=o.inc?Math.min(100,Math.round(o.out*100/o.inc)):0;
+var opts=D.ev.map(function(e){return '<option value="'+e.id+'"'+(e.id===D.cur?' selected':'')+'>'+esc(e.n)+'</option>'}).join("");
+var bl=o.bk.map(function(x){return '<div class="card row"><div class="av">'+esc(x.m.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(x.m.n)+'</div><div class="s">ठरलेली '+inr(x.m.due)+' · भरले '+inr(paid(x.m.id))+'</div></div><div class="a">'+inr(x.b)+'</div></div>'}).join("");
+return '<div class="hero"><div class="n" style="font-size:17px">नमस्कार, '+esc(S.n)+'</div><div class="s">📞 '+esc(S.p||"-")+' · '+esc(S.role)+' · <a onclick="logout()" style="color:var(--ac)">बाहेर पडा</a></div><div class="s" style="margin-top:14px">शिल्लक</div><div class="big">'+inr(o.inc-o.out)+'</div><div style="display:flex;justify-content:flex-end;margin-top:8px"><select class="pill" onchange="setEv(this.value)">'+opts+'</select></div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="s">जमेपैकी '+pc+'% खर्च झाला</div><div class="two"><div><small>● एकूण संकलन</small><b>'+inr(o.inc)+'</b></div><div><small>● एकूण खर्च</small><b>'+inr(o.out)+'</b></div></div><div class="s" style="margin-top:10px">वर्गणी '+inr(o.vg)+' · देणगी '+inr(o.dn)+' · दंड/इतर '+inr(o.ot)+'</div><div class="chips"><span class="chip">रोख '+inr(o.rk)+'</span><span class="chip">यूपीआय '+inr(o.up)+'</span></div></div>'
++'<div class="sec"><div class="card row" onclick="show(\'rec\')"><div class="av">📅</div><div class="g"><div class="s">आजचे संकलन</div><div class="a" style="font-size:24px">'+inr(o.tt)+'</div></div><div class="s">'+o.tc+' पावत्या ›</div></div>'
++'<div style="display:flex;gap:10px"><button class="btn" style="margin:0 0 4px;background:var(--card);border:1px solid var(--bd)" onclick="show(\'ex\')">💸 खर्च</button><button class="btn" style="margin:0 0 4px;background:var(--card);border:1px solid var(--bd)" onclick="show(\'rp\')">📊 अहवाल</button></div><h3><span>कोणाची बाकी आहे</span><span style="color:var(--ac)">'+inr(o.tb)+'</span></h3>'+(bl||'<div class="card s">सर्वांची वर्गणी भरली 🎉</div>')+'</div>'};
+
+R.rec=function(){var l=ce().filter(function(e){return e.t!=="खर्च"}).reverse();
+return '<div class="sec"><h3><span>पावत्या</span><span>'+l.length+'</span></h3>'+(l.map(function(e){return '<div class="card row" onclick="showRc(\''+e.id+'\')"><div class="av">'+e.r+'</div><div class="g"><div class="n">'+esc(e.n)+'</div><div class="s">'+(e.ph?esc(e.ph)+' · ':'')+e.t+' · '+e.mode+' · '+fdt(e.d)+'</div></div><div class="a ok">'+inr(e.a)+'</div></div>'}).join("")||'<div class="card s">अजून पावती नाही.</div>')+'</div>'};
+
+R.mem=function(){var h='<div class="sec"><h3><span>सभासद यादी</span><span>'+D.M.length+'</span></h3>';
+D.M.forEach(function(m){var b=m.due-paid(m.id);h+='<div class="card row"><div class="av">'+esc(m.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(m.n)+'</div><div class="s">'+nl(m)+'</div></div><div style="text-align:right">'+(m.due>0?'<div class="a '+(b>0?"bd":"ok")+'">'+(b>0?"बाकी "+inr(b):"भरली")+'</div>':'')+(admin?'<button class="btn sm" onclick="delM(\''+m.id+'\')">काढा</button>':'')+'</div></div>'});
+h+=admin?'<div class="card"><b>नवीन सभासद जोडा</b><label>नाव</label><input id="mn"><label>मोबाईल नं</label><input id="mp" type="tel" inputmode="numeric"><label>ठरलेली वर्गणी ₹ (ऐच्छिक)</label><input id="md" type="number" inputmode="numeric"><button class="btn" onclick="addM()">जोडा</button></div>':pinCard();
+return h+'</div>'};
+function addM(){var n=$("mn").value.trim();if(!n){toast("नाव लिहा");return}
+var o={n:n,p:$("mp").value.trim(),due:parseInt($("md").value,10)||0,ts:FB.serverTimestamp()};
+W(function(){return FB.addDoc(FB.collection(FB.db,"members"),o)}).then(function(){show("mem")})}
+function delM(id){W(function(){return FB.updateDoc(FB.doc(FB.db,"members",id),{del:true})})}
+
+var RL=["कार्याध्यक्ष","सल्लागार","समिती"];
+R.wk=function(){var h='<div class="sec">';
+RL.forEach(function(r){var l=D.W.filter(function(w){return w.r===r});
+h+='<h3><span>'+r+'</span><span>'+l.length+'</span></h3>'+(l.map(function(w){return '<div class="card row"><div class="av">'+esc(w.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(w.n)+'</div><div class="s">'+nl(w)+'</div></div>'+(admin?'<button class="btn sm" onclick="delW(\''+w.id+'\')">काढा</button>':'')+'</div>'}).join("")||'<div class="card s">अजून कोणी नाही.</div>')});
+h+=admin?'<div class="card"><b>कार्यकर्ता जोडा</b><label>पद</label><select class="f" id="wr">'+RL.map(function(r){return '<option>'+r+'</option>'}).join("")+'</select><label>नाव</label><input id="wn"><label>मोबाईल नं</label><input id="wp" type="tel" inputmode="numeric"><button class="btn" onclick="addW()">जोडा</button></div>':pinCard();
+return h+'</div>'};
+function addW(){var n=$("wn").value.trim();if(!n){toast("नाव लिहा");return}
+var o={r:$("wr").value,n:n,p:$("wp").value.trim(),ts:FB.serverTimestamp()};
+W(function(){return FB.addDoc(FB.collection(FB.db,"workers"),o)}).then(function(){show("wk")})}
+function delW(id){W(function(){return FB.updateDoc(FB.doc(FB.db,"workers",id),{del:true})})}
+
+R.ex=function(){var l=ce().filter(function(e){return e.t==="खर्च"}).reverse(),t=l.reduce(function(s,e){return s+e.a},0);
+return '<div class="sec"><h3><span>खर्च</span><span style="color:var(--bad)">'+inr(t)+'</span></h3>'+(l.map(function(e){return '<div class="card row"><div class="av">💸</div><div class="g"><div class="n">'+esc(e.n)+'</div><div class="s">'+e.mode+' · '+fdt(e.d)+(e.s?' · '+esc(e.s):'')+'</div></div><div style="text-align:right"><div class="a bd">-'+inr(e.a)+'</div>'+dbtn(e.id)+'</div></div>'}).join("")||'<div class="card s">अजून खर्च नाही.</div>')+'<button class="btn" onclick="openF(\'खर्च\')">＋ खर्च नोंदवा</button></div>'};
+
+R.rp=function(){var o=st(),L=[["एकूण संकलन",inr(o.inc),"ok"],["वर्गणी",inr(o.vg),""],["देणगी",inr(o.dn),""],["दंड / इतर",inr(o.ot),""],["रोख",inr(o.rk),""],["यूपीआय",inr(o.up),""],["एकूण खर्च",inr(o.out),"bd"],["शिल्लक",inr(o.inc-o.out),"a"],["एकूण बाकी वर्गणी",inr(o.tb),"bd"],["सभासद / भरली / बाकी",D.M.length+" / "+(D.M.length-o.bk.length)+" / "+o.bk.length,""]];
+return '<div class="sec"><h3><span>अहवाल</span><span>'+esc(evn())+'</span></h3><div class="card">'+L.map(function(r){return '<div class="row" style="justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--bd)"><span class="s">'+r[0]+'</span><b class="'+r[2]+'">'+r[1]+'</b></div>'}).join("")+'</div>'+xl()+'</div>'};
+
+R.form=function(){if(!can())return '<div class="sec"><div class="card">नोंद फक्त समिती सदस्य करू शकतात.<div class="s">समिती कोड असेल तर खाली टाका.</div></div>'+pinCard()+'</div>';
+var ex=FT==="खर्च",ts=ex?["खर्च"]:["वर्गणी","देणगी","दंड","इतर"];
+if(!ex&&ts.indexOf(FT)<0)FT="वर्गणी";
+var mo=D.M.map(function(m){return '<option value="'+m.id+'">'+esc(m.n)+'</option>'}).join("");
+return '<div class="sec"><h3><span>'+(ex?'खर्च नोंद':'जमा नोंद')+'</span></h3><div class="card"><label>प्रकार</label><select class="f" id="ft" onchange="tg()">'+ts.map(function(t){return '<option'+(t===FT?' selected':'')+'>'+t+'</option>'}).join("")+'</select><div id="mr"><label>सभासद निवडा (ऐच्छिक)</label><select class="f" id="fm" onchange="pk()"><option value="">-- इतर / सभासद नाही --</option>'+mo+'</select></div><label id="nl">नाव</label><input id="fn"><div id="pr"><label>मोबाईल नं</label><input id="fp" type="tel" inputmode="numeric"></div><label>रक्कम (₹)</label><input id="fa" type="number" inputmode="numeric"><label>पद्धत</label><select class="f" id="fo"><option>रोख</option><option>यूपीआय</option></select><label>तारीख</label><input id="fdt" type="date" value="'+td0+'"><label>नोट</label><input id="fs" placeholder="काही लिहायचे असल्यास"><button class="btn" onclick="saveE()">जतन करा</button></div></div>'};
+function tg(){var t=$("ft").value;FT=t;var ex=t==="खर्च";$("mr").style.display=ex?"none":"block";$("pr").style.display=ex?"none":"block";$("nl").textContent=ex?"खर्चाचे कारण":(t==="देणगी"?"दात्याचे नाव":"नाव")}
+function pk(){var v=$("fm").value,m=D.M.filter(function(x){return x.id===v})[0];if(m){$("fn").value=m.n;$("fp").value=nums(m)[0]||""}}
+function saveE(){var t=$("ft").value,n=$("fn").value.trim(),a=parseInt($("fa").value,10),d=$("fdt").value;
+if(!n||!a||!d){toast("नाव, रक्कम आणि तारीख आवश्यक आहे");return}
+if(!D.cur){toast("आधी ☰ मंडळ पानात उत्सव / वर्ष जोडा");return}
+var e={ev:D.cur,t:t,n:n,ph:t==="खर्च"?"":$("fp").value.trim(),a:a,d:d,s:$("fs").value.trim(),m:t==="वर्गणी"?($("fm").value||""):"",mode:$("fo").value,by:S?S.n:"",ts:FB.serverTimestamp()};
+if(t==="खर्च"){e.r=0;W(function(){return FB.addDoc(FB.collection(FB.db,"entries"),e)}).then(function(){show("ex")});return}
+W(function(){return FB.runTransaction(FB.db,async function(tx){
+var cr=FB.doc(FB.db,"counters",D.cur),sn=await tx.get(cr),r=(sn.exists()?sn.data().n:0)+1,er=FB.doc(FB.collection(FB.db,"entries"));
+e.r=r;tx.set(cr,{n:r});tx.set(er,e);return er.id})}).then(function(id){if(id){rcId=id;show("rcv")}})}
+
+function showRc(id){rcId=id;show("rcv")}
+R.rcv=function(){var e=D.E.filter(function(x){return x.id===rcId})[0];if(!e)return '<div class="sec"><div class="card">पावती उपलब्ध नाही.</div></div>';
+var ph=(e.ph||"").replace(/\D/g,""),wa=ph?(ph.length===10?"91"+ph:ph):"";
+var tx="भोवडवाडी उत्कर्ष मंडळ - फुपेरे (रजि.)\n"+e.t+" पावती क्र. "+e.r+"\nनाव: "+e.n+(e.ph?"\nमोबाईल: "+e.ph:"")+"\nप्रकार: "+e.t+(e.s?"\nनोट: "+e.s:"")+"\nरक्कम: "+inr(e.a)+" ("+e.mode+")\nतारीख: "+fdt(e.d)+"\nधन्यवाद!";
+return '<div class="sec"><div class="rc"><div style="text-align:center"><img src="icon-192.png" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover"></div><div style="text-align:center;font-weight:800;color:var(--ac);font-size:17px">भोवडवाडी उत्कर्ष मंडळ - फुपेरे (रजि.)</div><div class="s" style="text-align:center;margin-bottom:10px">स्थापना 1980 · '+esc(evn())+' · पावती</div><table><tr><td>पावती क्र.</td><td><b>'+e.r+'</b></td></tr><tr><td>तारीख</td><td>'+fdt(e.d)+'</td></tr><tr><td>नाव</td><td>'+esc(e.n)+'</td></tr><tr><td>मोबाईल नं</td><td>'+esc(e.ph||"-")+'</td></tr><tr><td>प्रकार</td><td>'+e.t+' ('+e.mode+')</td></tr><tr><td>नोट</td><td>'+esc(e.s||"-")+'</td></tr><tr><td>रक्कम</td><td><b>'+inr(e.a)+'</b></td></tr><tr><td>नोंद केली</td><td>'+esc(e.by||'-')+'</td></tr></table><div class="s" style="text-align:center;margin-top:12px">धन्यवाद! सही: खजिनदार / अध्यक्ष</div></div><a class="btn" target="_blank" rel="noopener" href="https://wa.me/'+wa+'?text='+encodeURIComponent(tx)+'">'+(wa?'सभासदाला WhatsApp वर पाठवा':'WhatsApp वर पाठवा')+'</a><div style="text-align:center;margin-top:10px">'+dbtn(e.id)+'</div></div>'};
+
+var PF=[["adr","गाव / पत्ता"],["pres","अध्यक्ष"],["sec","सचिव"],["tre","खजिनदार"],["ph","संपर्क क्रमांक"]];
+R.pf=function(){var h='<div class="sec"><div class="card" style="text-align:center"><div style="font-size:42px">🪔</div><div class="a" style="font-size:18px;white-space:normal">भोवडवाडी उत्कर्ष मंडळ - फुपेरे (रजि.)</div><div class="s">स्थापना 1980 · नोंदणीकृत मंडळ</div></div><div class="card">';
+if(admin){PF.forEach(function(f){h+='<label>'+f[1]+'</label><input id="pf_'+f[0]+'" value="'+esc(D.P[f[0]]||"")+'">'});
+h+='<button class="btn" onclick="saveP()">माहिती जतन करा</button></div><div class="card"><b>नवीन उत्सव / वर्ष जोडा</b><input id="nev" placeholder="उदा. उत्सव 2027"><button class="btn" onclick="addEv()">जोडा</button></div>'}
+else{h+='<table style="width:100%;font-size:14px;border-collapse:collapse">';PF.forEach(function(f){h+='<tr><td style="padding:8px 0;color:var(--mut);width:40%;border-bottom:1px solid var(--bd)">'+f[1]+'</td><td style="border-bottom:1px solid var(--bd)">'+esc(D.P[f[0]]||"-")+'</td></tr>'});h+='</table></div>'+pinCard()}
+return h+'</div>'};
+function saveP(){var o={};PF.forEach(function(f){o[f[0]]=$("pf_"+f[0]).value.trim()});
+W(function(){return FB.setDoc(FB.doc(FB.db,"profile","main"),o,{merge:true})}).then(function(){show("home")})}
+function setCur(id){D.cur=id;try{localStorage.setItem("mandal_cur",id)}catch(e){}}
+function addEv(){var n=$("nev").value.trim();if(!n){toast("नाव लिहा");return}
+W(function(){return FB.addDoc(FB.collection(FB.db,"events"),{n:n,ts:FB.serverTimestamp()})}).then(function(r){if(r){setCur(r.id);show("home")}})}
+function setEv(v){setCur(v);show("home")}
+var DQ="";
+function dbtn(id){return can()?'<button class="btn sm" onclick="askDel(\''+id+'\')">🗑 रद्द करा</button>':""}
+function askDel(id){DQ=id;var q=$("dq");
+if(!id){q.style.display="none";q.innerHTML="";return}
+var e=D.E.filter(function(x){return x.id===id})[0];if(!e){DQ="";return}
+q.innerHTML='<div style="width:100%;max-width:560px;margin:0 auto;background:var(--card);border-radius:20px 20px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px))"><b>ही नोंद रद्द करायची?</b><div class="s">'+(e.r?'पावती '+e.r+' · ':'')+esc(e.n)+' · '+inr(e.a)+'</div><label>रद्द करण्याचे कारण (आवश्यक)</label><input id="dwhy" placeholder="उदा. रक्कम चुकीची टाकली"><button class="btn" style="background:var(--bad)" onclick="doDel()">रद्द करा</button><button class="btn" style="background:none;border:1px solid var(--bd)" onclick="askDel(\'\')">नको</button></div>';
+q.style.display="flex";$("dwhy").focus()}
+function doDel(){var r=$("dwhy").value.trim();if(!r){toast("रद्द करण्याचे कारण लिहा");return}
+var id=DQ;askDel("");
+W(function(){return FB.updateDoc(FB.doc(FB.db,"entries",id),{del:true,delBy:S?S.n:"",delWhy:r,delAt:FB.serverTimestamp()})}).then(function(){show(V==="rcv"?"rec":V)})}
+function xl(){var l=(D.X||[]).filter(function(e){return e.ev===D.cur});if(!l.length)return "";
+return '<h3><span>रद्द केलेल्या नोंदी</span><span>'+l.length+'</span></h3>'+l.map(function(e){return '<div class="card row" style="opacity:.75"><div class="g"><div class="n">'+(e.r?'पावती '+e.r+' · ':'')+esc(e.n)+'</div><div class="s">'+e.t+' · '+inr(e.a)+' · रद्द केली: '+esc(e.delBy||"-")+'</div><div class="s">कारण: '+esc(e.delWhy||"-")+'</div></div></div>'}).join("")}
+function openF(t){FT=t;show("form")}
+
+function show(v){V=v;var nv={home:0,mem:1,form:2,rec:3,wk:4};
+document.querySelectorAll("nav button").forEach(function(b,i){b.classList.toggle("on",nv[v]===i)});
+$("main").innerHTML=R[v]();
+$("fab").style.display=(v==="home"||v==="rec")?"block":"none";
+document.querySelector(".top").classList.toggle("r",v!=="home");
+if(v==="form"&&can())tg();
+window.scrollTo(0,0)}
+window.addEventListener("fbready",boot);if(window.FB)boot();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+</script>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth,signInAnonymously} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore,collection,doc,addDoc,setDoc,updateDoc,onSnapshot,runTransaction,serverTimestamp,arrayUnion} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+// ===== येथे तुमचा Firebase config पेस्ट करा =====
+const firebaseConfig={
+  apiKey:"AIzaSyBF0_AdQk7ojYU92QDjVoigCjB-dJb-yds",
+  authDomain:"bhovadvadi-utkarsh-mandal.firebaseapp.com",
+  projectId:"bhovadvadi-utkarsh-mandal",
+  storageBucket:"bhovadvadi-utkarsh-mandal.firebasestorage.app",
+  messagingSenderId:"838869508927",
+  appId:"1:838869508927:web:e9b7182d0d107cfe09698a",
+  measurementId:"G-ZCZKQ3MXX2"
+};
+// =================================================
+if(firebaseConfig.apiKey.startsWith("YOUR")){window.FB={bad:true}}
+else{
+  const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+  window.FB={bad:false,db,auth,collection,doc,addDoc,setDoc,updateDoc,onSnapshot,runTransaction,serverTimestamp,arrayUnion};
+  try{await signInAnonymously(auth)}catch(e){console.error(e)}
+}
+window.dispatchEvent(new Event("fbready"));
+</script>
+</body>
+</html>
