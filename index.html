@@ -102,7 +102,7 @@ function st(){var o={inc:0,out:0,vg:0,dn:0,ot:0,rk:0,up:0,tt:0,tc:0};
 ce().forEach(function(e){if(e.t==="खर्च")o.out+=e.a;else{o.inc+=e.a;if(e.t==="वर्गणी")o.vg+=e.a;else if(e.t==="देणगी")o.dn+=e.a;else o.ot+=e.a;if(e.mode==="रोख")o.rk+=e.a;else o.up+=e.a;if(e.d===td0){o.tt+=e.a;o.tc++}}});
 o.bk=D.M.map(function(m){return {m:m,b:(m.due||0)+(m.prev||0)-paid(m.id)}}).filter(function(x){return x.b>0});
 o.tb=o.bk.reduce(function(s,x){return s+x.b},0);o.cash=ledger("रोख").bal;o.bank=ledger("बँक").bal;return o}
-function pinCard(){if(!(S&&S.w))return "";return '<div class="card"><b>समिती कोड</b><div class="s">नोंद आणि बदल फक्त समिती कोड असलेले करू शकतात.</div><input id="pin" type="password" placeholder="समिती कोड टाका"><button class="btn" onclick="unlock()">उघडा</button></div>'}
+function pinCard(f){if(!f&&!(S&&S.w))return "";return '<div class="card"><b>समिती कोड</b><div class="s">नोंद आणि बदल फक्त समिती कोड असलेले करू शकतात.</div><input id="pin" type="password" placeholder="समिती कोड टाका"><button class="btn" onclick="unlock()">उघडा</button></div>'}
 function codeCheck(c){var u=FB.auth&&FB.auth.currentUser;if(!u)return Promise.reject({code:"no-auth"});
 return Promise.race([FB.setDoc(FB.doc(FB.db,"committee",u.uid),{k:c}),new Promise(function(_,rj){setTimeout(function(){rj({code:"unavailable"})},9000)})])}
 function setCode(){admin=true;setTimeout(syncNames,0);try{localStorage.setItem("mandal_cm","1")}catch(e){}
@@ -123,7 +123,9 @@ function matchName(n){var iw=sk(n);if(!iw.length)return {none:true};var full=[],
 D.N.forEach(function(x){var mw=x.k||[];if(!mw.length)return;
 if(mw.length===iw.length&&mw.every(function(w,i){return w===iw[i]}))full.push(x);
 else if(iw.length<mw.length&&subseq(iw,mw))part.push(x)});
-if(full.length===1)return {c:full[0]};if(full.length>1)return {amb:true};if(part.length)return {partial:true};return {none:true}}
+if(full.length>1){var wk=full.filter(function(x){return x.t==="w"});
+if(wk.length===1&&full.every(function(x){return (x.k||[]).join("")===(full[0].k||[]).join("")}))return {c:wk[0]};return {amb:true}}
+if(full.length===1)return {c:full[0]};if(part.length)return {partial:true};return {none:true}}
 function authReady(){return new Promise(function(res){var n=0;(function t(){if(FB.auth&&FB.auth.currentUser)res(FB.auth.currentUser);else if(n++>40)res(null);else setTimeout(t,150)})()})}
 function tmo(p,ms){return Promise.race([p,new Promise(function(_,rj){setTimeout(function(){rj({code:"unavailable"})},ms)})])}
 function login(){var n=$("ln").value.trim(),p=$("lp").value.trim(),d=dg(p);
@@ -146,7 +148,7 @@ else toast(e&&(e.code==="unavailable"||e.code==="no-auth")?"इंटरने�
 function loginCode(){var c=$("lpin").value.trim();if(!c){toast("कोड टाका");return}
 codeCheck(c).then(function(){setCode();S={n:$("ln").value.trim()||"समिती",p:$("lp").value.trim(),role:"समिती",pin:true,w:true};ss();waitData=true;first={names:first.names};subAll()}).catch(function(e){toast(e&&(e.code==="no-auth"||e.code==="unavailable")?"इंटरनेट चालू करून पुन्हा प्रयत्न करा":"समिती कोड चुकीचा आहे")})}
 function wipe(){dropSubs();D.M=[];D.W=[];D.E=[];D.B=[];D.ev=[];D.X=[];D.XB=[];D.P={};D.cur=null;first={names:first.names}}
-function logout(){S=null;admin=false;try{localStorage.removeItem(K+"s");localStorage.removeItem("mandal_cm")}catch(e){}wipe();start()}
+function logout(){S=null;try{localStorage.removeItem(K+"s")}catch(e){}wipe();start()}
 function badSession(){if(!S)return;S=null;admin=false;try{localStorage.removeItem(K+"s");localStorage.removeItem("mandal_cm")}catch(e){}
 wipe();booted=true;waitData=false;start();toast("तुमचे लॉगिन आता वैध नाही. कृपया पुन्हा लॉगिन करा.")}
 function start(){$("ld").style.display="none";
@@ -234,7 +236,7 @@ R.home=function(){var o=st(),pc=o.inc?Math.min(100,Math.round(o.out*100/o.inc)):
 var opts=D.ev.map(function(e){return '<option value="'+e.id+'"'+(e.id===D.cur?' selected':'')+'>'+esc(e.n)+'</option>'}).join("");
 var bl=o.bk.map(function(x){var m=x.m;return '<div class="card row"'+(can()?' onclick="bkF(\''+m.id+'\')"':'')+'><div class="av">'+esc(m.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(m.n)+'</div><div class="s">वर्गणी '+inr(m.due||0)+' + मागील '+inr(m.prev||0)+' · भरले '+inr(paid(m.id))+'</div>'+(m.dn?'<div class="s">📝 '+esc(m.dn)+'</div>':'')+'</div><div class="a bd">'+inr(x.b)+'</div></div>'}).join("");
 function tl(f,c,bg,t){return '<button class="tile" onclick="show(\''+f+'\')"><i style="background:'+bg+';color:'+c+'">'+ic(t==="जमा"?"up":(t==="खर्च"?"down":"chart"),24)+'</i>'+t+'</button>'}
-return '<div class="hero"><div class="n" style="font-size:16px">नमस्कार, '+esc(S.n)+', आपले स्वागत आहे 🙏</div><div class="s">📞 '+esc(S.p||"-")+' · '+esc(S.role)+'</div><div class="s" style="margin-top:14px">एकूण शिल्लक</div><div class="big">'+inr(o.cash+o.bank)+'</div><div style="display:flex;justify-content:flex-end;margin-top:8px"><select class="pill" onchange="setEv(this.value)">'+opts+'</select></div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="s">जमेपैकी '+pc+'% खर्च झाला</div><div class="two"><div><small>● एकूण संकलन</small><b>'+inr(o.inc)+'</b></div><div><small>● एकूण खर्च</small><b>'+inr(o.out)+'</b></div></div><div class="s" style="margin-top:10px">वर्गणी '+inr(o.vg)+' · देणगी '+inr(o.dn)+' · दंड/इतर '+inr(o.ot)+'</div><div class="chips"><span class="chip" onclick="BA=\'रोख\';show(\'bk\')">रोख '+inr(o.cash)+'</span><span class="chip" onclick="BA=\'बँक\';show(\'bk\')">बँक '+inr(o.bank)+'</span></div></div>'
+return '<div class="hero"><div class="n" style="font-size:16px">नमस्कार, '+esc(S.n)+', आपले स्वागत आहे 🙏</div><div class="s">📞 '+esc(S.p||"-")+' · '+esc(admin?(S.role==="सभासद"?"समिती":S.role+" · समिती"):S.role)+'</div><div class="s" style="margin-top:14px">एकूण शिल्लक</div><div class="big">'+inr(o.cash+o.bank)+'</div><div style="display:flex;justify-content:flex-end;margin-top:8px"><select class="pill" onchange="setEv(this.value)">'+opts+'</select></div><div class="bar"><i style="width:'+pc+'%"></i></div><div class="s">जमेपैकी '+pc+'% खर्च झाला</div><div class="two"><div><small>● एकूण संकलन</small><b>'+inr(o.inc)+'</b></div><div><small>● एकूण खर्च</small><b>'+inr(o.out)+'</b></div></div><div class="s" style="margin-top:10px">वर्गणी '+inr(o.vg)+' · देणगी '+inr(o.dn)+' · दंड/इतर '+inr(o.ot)+'</div><div class="chips"><span class="chip" onclick="BA=\'रोख\';show(\'bk\')">रोख '+inr(o.cash)+'</span><span class="chip" onclick="BA=\'बँक\';show(\'bk\')">बँक '+inr(o.bank)+'</span></div></div>'
 +'<div class="sec"><div class="tiles">'+tl("jm","#4ade80","#16a34a26","जमा")+tl("ex","#f87171","#dc262626","खर्च")+tl("rp","#eaa73c","#eaa73c26","अहवाल")+'</div>'
 +'<div class="card row" onclick="show(\'jm\')"><div class="av">📅</div><div class="g"><div class="s">आजचे संकलन</div><div class="a" style="font-size:22px">'+inr(o.tt)+'</div></div><div class="s">'+o.tc+' नोंदी ›</div></div>'
 +'<h3><span>कोणाची बाकी आहे</span><span style="color:var(--ac)">'+inr(o.tb)+'</span></h3>'
@@ -247,10 +249,10 @@ return '<div class="sec"><div class="ph"><h2>जमा</h2><span class="a ok">'+
 function mk(id){var en=D.E.filter(function(x){return x.id===id})[0];if(!en||en.r){rcId=id;show("rcv");return}
 var r=nextR();en.r=r;
 WN(function(){return FB.updateDoc(FB.doc(FB.db,"entries",id),{r:r})},function(){rcId=id;show("rcv")})}
-R.mem=function(){var cn=D.M.filter(function(m){return m.cl}).length;
+R.mem=function(){var cn=D.M.filter(function(m){return m.cl||twin(m)}).length;
 var h='<div class="sec"><h3><span>सभासद यादी</span><span>'+D.M.length+(can()?' · ✅ '+cn+' जोडले':'')+'</span></h3>';
 D.M.forEach(function(m){var tot=(m.due||0)+(m.prev||0),b=tot-paid(m.id);
-h+='<div class="card row"><div class="av">'+esc(m.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(m.n)+'</div><div class="s">'+nl(m)+'</div>'+(can()?'<div class="s">'+cst(m)+'</div>':'')+'</div><div style="text-align:right">'+(tot>0?'<div class="a '+(b>0?"bd":"ok")+'">'+(b>0?"बाकी "+inr(b):"भरली")+'</div>':'')+(admin?'<button class="btn sm" onclick="ed(\'m\',\''+m.id+'\')">बदला</button> <button class="btn sm" onclick="delM(\''+m.id+'\')">काढा</button>'+(m.cl?' <button class="btn sm" onclick="resetC(\'m\',\''+m.id+'\')">रीसेट</button>':''):'')+'</div></div>'});
+h+='<div class="card row"><div class="av">'+esc(m.n.charAt(0))+'</div><div class="g"><div class="n">'+esc(m.n)+'</div><div class="s">'+nl(m)+'</div>'+(can()?'<div class="s">'+cst(m,1)+'</div>':'')+'</div><div style="text-align:right">'+(tot>0?'<div class="a '+(b>0?"bd":"ok")+'">'+(b>0?"बाकी "+inr(b):"भरली")+'</div>':'')+(admin?'<button class="btn sm" onclick="ed(\'m\',\''+m.id+'\')">बदला</button> <button class="btn sm" onclick="delM(\''+m.id+'\')">काढा</button>'+(m.cl?' <button class="btn sm" onclick="resetC(\'m\',\''+m.id+'\')">रीसेट</button>':''):'')+'</div></div>'});
 h+=admin?'<div class="card"><b>नवीन सभासद जोडा</b><label>पूर्ण नाव (मधल्या नावासह)</label><input id="mn"><label>मोबाईल नं (ऐच्छिक)</label><input id="mp" type="tel" inputmode="numeric"><label>ठरलेली वर्गणी ₹ (ऐच्छिक)</label><input id="md" type="number" inputmode="numeric"><button class="btn" onclick="addM()">जोडा</button></div>':pinCard();
 return h+'</div>'};
 function addM(){var n=$("mn").value.trim();if(!n){toast("नाव लिहा");return}
@@ -300,8 +302,8 @@ var PF=[["adr","गाव / पत्ता"],["pres","अध्यक्ष"],[
 R.pf=function(){var h='<div class="sec"><div class="card" style="text-align:center"><div style="font-size:42px">🪔</div><div class="a" style="font-size:18px;white-space:normal">भोवडवाडी उत्कर्ष मंडळ - फुपेरे (रजि.)</div><div class="s">स्थापना 1980 · नोंदणीकृत मंडळ</div></div>'+instCard()+shareCard()+'<div class="card">';
 if(admin){PF.forEach(function(f){h+='<label>'+f[1]+'</label><input id="pf_'+f[0]+'" value="'+esc(D.P[f[0]]||"")+'">'});
 h+='<button class="btn" onclick="saveP()">माहिती जतन करा</button></div><div class="card"><b>नवीन उत्सव / वर्ष जोडा</b><input id="nev" placeholder="उदा. उत्सव 2027"><button class="btn" onclick="addEv()">जोडा</button></div>'}
-else{h+='<table style="width:100%;font-size:14px;border-collapse:collapse">';PF.forEach(function(f){h+='<tr><td style="padding:8px 0;color:var(--mut);width:40%;border-bottom:1px solid var(--bd)">'+f[1]+'</td><td style="border-bottom:1px solid var(--bd)">'+esc(D.P[f[0]]||"-")+'</td></tr>'});h+='</table></div>'+pinCard()}
-return h+'</div>'};
+else{h+='<table style="width:100%;font-size:14px;border-collapse:collapse">';PF.forEach(function(f){h+='<tr><td style="padding:8px 0;color:var(--mut);width:40%;border-bottom:1px solid var(--bd)">'+f[1]+'</td><td style="border-bottom:1px solid var(--bd)">'+esc(D.P[f[0]]||"-")+'</td></tr>'});h+='</table></div>'+pinCard(1)}
+h+=logoutCard();return h+'</div>'};
 function saveP(){var o={};PF.forEach(function(f){o[f[0]]=$("pf_"+f[0]).value.trim()});
 WN(function(){return FB.setDoc(FB.doc(FB.db,"profile","main"),o,{merge:true})},function(){show("home","r")})}
 function setCur(id){D.cur=id;try{localStorage.setItem("mandal_cur",id)}catch(e){}}
@@ -335,7 +337,11 @@ WN(function(){var b=FB.writeBatch(FB.db);b.update(FB.doc(FB.db,kind==="w"?"worke
 function resetC(kind,id){var o=(kind==="w"?D.W:D.M).filter(function(x){return x.id===id})[0];if(!o)return;var q=$("dq");
 q.innerHTML='<div style="'+SH+'"><b>दावा रीसेट करायचा?</b><div class="s">'+esc(o.n)+' चा जोडलेला नंबर ('+esc(o.cl||"-")+') काढला जाईल. त्या फोनचा प्रवेश बंद होईल आणि सभासदाला पुन्हा लॉगिन करावे लागेल.</div><button class="btn" style="background:var(--bad)" onclick="doReset(\''+kind+'\',\''+id+'\')">रीसेट करा</button><button class="btn alt" onclick="closeQ()">नको</button></div>';q.style.display="flex"}
 function doReset(kind,id){closeQ();WN(function(){var b=FB.writeBatch(FB.db);b.update(FB.doc(FB.db,kind==="w"?"workers":"members",id),{cl:""});b.set(FB.doc(FB.db,"names",id),{c:false},{merge:true});return b.commit()},function(){show(V)})}
-function cst(o){var d="";if(o.clAt){try{d=' · '+fdt(new Date(ms({ts:o.clAt})).toISOString().slice(0,10))}catch(e){}}return o.cl?'✅ जोडले · '+esc(o.cl)+d:'⏳ अजून लॉगिन नाही'}
+function twin(o){var k=sk(o.n).join("");return D.W.filter(function(x){return x.cl&&sk(x.n).join("")===k})[0]}
+function logoutCard(){return '<div class="card"><div class="n">लॉग आउट</div><div class="s">'+(S?esc(S.n||"")+' · '+esc(admin?(S.role==="सभासद"?"समिती":S.role+" · समिती"):(S.role||"")):"")+'</div><div class="s" style="margin-top:6px">चुकीच्या नावाने लॉगिन झाले असेल तर येथून बाहेर पडून पुन्हा योग्य पूर्ण नावाने लॉगिन करा.</div><button class="btn alt" onclick="askLogout()">बाहेर पडा (लॉग आउट)</button></div>'}
+function askLogout(){var q=$("dq");q.innerHTML='<div style="'+SH+'"><b>लॉग आउट करायचे?</b><div class="s">तुम्हाला पुन्हा पूर्ण नाव आणि WA नंबरने लॉगिन करावे लागेल. नोंदी सुरक्षित राहतात.</div><button class="btn" style="background:var(--bad)" onclick="closeQ();logout()">होय, बाहेर पडा</button><button class="btn alt" onclick="closeQ()">नको</button></div>';q.style.display="flex"}
+function cst(o,m){var tw=(!o.cl&&m)?twin(o):null,r=tw||o,d="";if(r.clAt){try{d=' · '+fdt(new Date(ms({ts:r.clAt})).toISOString().slice(0,10))}catch(e){}}
+return r.cl?'✅ जोडले · '+esc(r.cl)+d+(tw?' (कार्यकर्ते यादीतून)':''):'⏳ अजून लॉगिन नाही'}
 function ledger(acct){var rows=[],B=(acct==="बँक");
 ce().forEach(function(e){if((e.mode!=="रोख")!==B)return;
 if(e.t==="खर्च")rows.push({d:e.d,ts:ms(e),tx:e.n+(e.s?' · '+e.s:''),cr:0,dr:e.a,id:e.id,col:"entries"});
